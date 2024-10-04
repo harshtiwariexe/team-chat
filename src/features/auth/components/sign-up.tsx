@@ -11,12 +11,16 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { FaGithub } from "react-icons/fa";
 import { SignInFlow } from "../types";
+import { useState } from "react";
 
 interface SignUpCardProps {
   setState: (state: SignInFlow) => void;
 }
 
 export default function SignUpCard({ setState }: SignUpCardProps) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   return (
     <>
       <Card className="w-full h-full p-8">
@@ -28,19 +32,33 @@ export default function SignUpCard({ setState }: SignUpCardProps) {
           <form action="" className="space-y-2.5">
             <Input
               disabled={false}
-              value=""
-              onChange={() => {}}
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               type="email"
               placeholder="Email"
-              required={true}
+              required
             />
             <Input
               disabled={false}
-              value=""
-              onChange={() => {}}
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               type="password"
               placeholder="Password"
-              required={true}
+              required
+            />
+            <Input
+              disabled={false}
+              value={confirmPassword}
+              onChange={(e) => {
+                setConfirmPassword(e.target.value);
+              }}
+              type="password"
+              placeholder="Confirm the Password"
+              required
             />
             <Button type="submit" className="w-full" size="lg" disabled={false}>
               Sign Up

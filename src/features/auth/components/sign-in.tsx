@@ -11,12 +11,16 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { FaGithub } from "react-icons/fa";
 import { SignInFlow } from "../types";
+import { useState } from "react";
 
 interface SignInCardProps {
   setState: (state: SignInFlow) => void;
 }
 
 export default function SignInCard({ setState }: SignInCardProps) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <>
       <Card className="w-full h-full p-8">
@@ -28,16 +32,20 @@ export default function SignInCard({ setState }: SignInCardProps) {
           <form action="" className="space-y-2.5">
             <Input
               disabled={false}
-              value=""
-              onChange={() => {}}
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               type="email"
               placeholder="Email"
               required={true}
             />
             <Input
               disabled={false}
-              value=""
-              onChange={() => {}}
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               type="password"
               placeholder="Password"
               required={true}
